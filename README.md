@@ -18,9 +18,9 @@ sudo apt-get update \
  ```
 Then add custom shortcut for it:
 
-![Adding custom shortcut on Ubuntu 16.04 - 1](http://prntscr.com/e5nnaw)
+http://prntscr.com/e5nnaw
 
 
 And add custom key bindings for it:
 
-![Adding custom shortcut on Ubuntu 16.04- 2](http://prntscr.com/e5nnu2)
+http://prntscr.com/e5nnu2
