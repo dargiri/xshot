@@ -1,0 +1,49 @@
+#!/bin/bash
+
+BROWSER_CMD="firefox"
+UPLOAD_URL="https://prntscr.com/upload.php"
+
+TMP_FILE_DIR="$HOME"
+
+TIMESTAMP_AS_STRING=$(date +%Y%m%d%H%M%S)
+
+# file name shout be without spaces
+TMP_FILE_NAME="screenshot_"$(whoami)"_${TIMESTAMP_AS_STRING}.png"
+
+TMP_FILE_PATH="${TMP_FILE_DIR}/${TMP_FILE_NAME}"
+
+gnome-screenshot -a -f "${TMP_FILE_PATH}"
+
+CURL_RESULT=$(curl --silent -X POST -F "image=@${TMP_FILE_PATH}" "${UPLOAD_URL}" -H 'Host: prntscr.com' -H 'User-Agent: XShot/1.0' -H 'Accept: application/json, text/javascript, */*; q=0.01' -H 'Accept-Language: en-US,en;q=0.5' --compressed  -H 'origin: http://prnt.sc'  -H 'Connection: keep-alive')
+
+CURL_RESULT_TRIMMED="$(echo -e "${CURL_RESULT}" | tr -d '[[:space:]]')"
+
+STATUS=$(echo "$CURL_RESULT_TRIMMED" | jq -M --ascii-output --raw-output '.status')
+IMG_URL=$(echo "$CURL_RESULT_TRIMMED" | jq -M --ascii-output --raw-output '.data')
+
+case "$STATUS" in
+  "success" )
+    XMSG_RESULT=$(xmessage -buttons ok,copy,open -print -center -default ok "${CURL_RESULT}")
+
+    echo "Result: ${XMSG_RESULT}"
+   
+    case "$XMSG_RESULT" in
+      "open" )
+         echo "Open curl in browser"
+         $BROWSER_CMD $IMG_URL
+      ;;
+      "copy" )
+         echo "Copying to buffer"
+         echo $IMG_URL | xclip -sel clip
+         notify-send -i gtk-dialog-authentication "xshot" "Image url copied to clipboard"
+      ;;
+    esac
+
+  ;;
+
+  * )
+   xmessage -buttons ok -default ok -center "Something went wrong... Check bash script. Report bug here: https://github.com/dargiri/xshot/issues"  &
+  ;;
+esac
+
+rm $TMP_FILE_PATH
