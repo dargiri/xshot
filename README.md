@@ -8,18 +8,19 @@ jq and curl.
 
 Installation:
 
+```bash
 sudo apt-get update \
  && sudo apt-get --yes install jq \
  && sudo --yes apt-get install curl \
  && curl https://raw.githubusercontent.com/dargiri/xshot/master/xshot > xshot \
  && chmod +x xshot \
  && sudo mv xshot /usr/local/bin/
- 
+ ```
 Then add custom shortcut for it:
 
-http://prntscr.com/e5nnaw
+![Adding custom shortcut on Ubuntu 16.04 - 1](http://prntscr.com/e5nnaw)
 
 
 And add custom key bindings for it:
 
-http://prntscr.com/e5nnu2
+![Adding custom shortcut on Ubuntu 16.04- 2](http://prntscr.com/e5nnu2)
