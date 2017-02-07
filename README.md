@@ -4,14 +4,13 @@ Simple screenshot utility for X window system which allows you to post your scre
 Currently tested with ubuntu 16.04
 
 Needs only few dependencies:
-jq and curl.
+xclip, jq and curl.
 
 Installation:
 
 ```bash
 sudo apt-get update \
- && sudo apt-get --yes install jq \
- && sudo apt-get --yes install curl \
+ && sudo apt-get --yes install xclip jq curl \
  && curl https://raw.githubusercontent.com/dargiri/xshot/master/xshot > xshot \
  && chmod +x xshot \
  && sudo mv xshot /usr/local/bin/
