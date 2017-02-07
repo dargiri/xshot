@@ -11,7 +11,7 @@ Installation:
 ```bash
 sudo apt-get update \
  && sudo apt-get --yes install jq \
- && sudo --yes apt-get install curl \
+ && sudo apt-get --yes install curl \
  && curl https://raw.githubusercontent.com/dargiri/xshot/master/xshot > xshot \
  && chmod +x xshot \
  && sudo mv xshot /usr/local/bin/
