@@ -1,9 +1,9 @@
 #!/bin/bash
 
-BROWSER_CMD="firefox"
+BROWSER_CMD="xdg-open"
 UPLOAD_URL="https://prntscr.com/upload.php"
 
-TMP_FILE_DIR="$HOME"
+TMP_FILE_DIR="/tmp/"
 
 TIMESTAMP_AS_STRING=$(date +%Y%m%d%H%M%S)
 
