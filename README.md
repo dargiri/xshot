@@ -6,7 +6,9 @@ Currently tested with ubuntu 16.04
 Needs only few dependencies:
 xclip, jq and curl.
 
-Installation:
+##Installation options:##
+
+* Manual:
 
 ```bash
 sudo apt-get update \
@@ -15,6 +17,14 @@ sudo apt-get update \
  && chmod +x xshot \
  && sudo mv xshot /usr/local/bin/
  ```
+* Using deb package:
+Download latest *.deb package from here https://github.com/dargiri/xshot/tree/master/dist/debs then install it via double click or via terminal:
+```bash
+sudo dpkg -i xshot_0.1.deb
+#install missing dependencies if you see some errors about missing deps
+sudo apt-get -f install
+```
+ 
 Then add custom shortcut for it:
 
 http://prntscr.com/e5nnaw
